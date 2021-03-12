@@ -12,20 +12,20 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('insert','StudInsertController@insertform');
-Route::get('create','StudInsertController@insert');
-Route::get('users',[UserController::class,'index']);
-Route::get('list',[UserController::class,'list']);
-
+Route::get('/login', function () {
+    return view('login');
+});
+Route::view('login',[UserController::class,'login']);
 Route::get('/service', function () {
     return view('services');
 });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // Route::view('service','services');
 // Route::get('service', function () {
 //     return view('services');
 // });
+// Route::post('insert','StudInsertController@insertform');
+// Route::get('create','StudInsertController@insert');
+// Route::get('users',[UserController::class,'index']);
+// Route::get('student_details',[UserController::class,'student_details']);

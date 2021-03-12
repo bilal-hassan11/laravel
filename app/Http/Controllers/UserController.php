@@ -4,19 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Member;
+use App\Models\student_details;
 
 
 class UserController extends Controller
 {
-    function index(){
+    function login(Request $req){
 
-       return DB::select('select * from student_details');
+        return $req->input();
     }
-
-    function list(){
-        
-        $data= Member::all();
-        return $data;  
-    } 
+    
 }
