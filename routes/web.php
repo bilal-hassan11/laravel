@@ -15,6 +15,7 @@ use App\Http\Controllers\UserController;
 Route::post('insert','StudInsertController@insertform');
 Route::get('create','StudInsertController@insert');
 Route::get('users',[UserController::class,'index']);
+Route::get('list',[UserController::class,'list']);
 
 Route::get('/service', function () {
     return view('services');
