@@ -12,4 +12,9 @@ class Post extends Model
     protected $fillable = [
         'title','description',
     ]; 
+
+    public function rating(){
+
+        return $this->hasMany(Rating::class);
+    }
 }

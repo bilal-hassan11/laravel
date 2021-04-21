@@ -45,6 +45,7 @@ Route::get('cart', [ProductsController::class,'cart']);
 Route::get('add-to-cart/{id}', [ProductsController::class,'addToCart']);
 Route::patch('update-cart', [ProductsController::class,'update']);
 Route::delete('remove-from-cart',[ProductsController::class,'remove']);
+Route::post('/rating/{product}', [ProductsController::class,'rating'])->name('rating');
 // Route::get('/checkout', [ProductsController::class,'checkout']);
 
 // // //Import & Export

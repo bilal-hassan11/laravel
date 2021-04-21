@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use AppRating;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use DB;
 use Illuminate\Support\facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Models\category;
@@ -93,27 +94,7 @@ class ProductsController extends Controller
     public function index(){
 
         $products = Product::all();//retrieve all products from database
-        // foreach($products as $product){
         
-        //     echo"<pre>";
-        //     print_r($product->photo);
-        //     die();
-                
-        // }
-        
-        // $orders = DB::table('products')
-        //         ->select('*')
-        //         ->groupBy('color')
-        //         ->get();
-        // echo"<pre>";
-        // print_r($orders);
-        // die();
-                
-        //         foreach($products as $product){
-        // echo"<pre>";
-        // print_r($product->color);
-        // die();
-        // }
         return view('products', compact('products'));
     }
 
@@ -189,6 +170,15 @@ class ProductsController extends Controller
     public function checkout(){
 
         return view('checkout');
+    }
+
+    public function rating (Request $request, Products $product) {
+
+        $rating = new Rating;
+        $rating->user_id = Auth::id();
+        $rating->rating = $request->input('star');
+        $product->ratings()->save($rating);
+        return redirect()->back();
     }
     //update an image 
     public function update_image(Request $request, $id){

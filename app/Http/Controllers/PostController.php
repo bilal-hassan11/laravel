@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use AppRating;
 
 class PostController extends Controller
 {
@@ -17,6 +18,14 @@ class PostController extends Controller
         $posts = Post::all();
 
       return view('posts', ['posts' => $posts]);
+    }
+
+    public function postStar (Request $request, Post $post){
+        $rating = new Rating;
+        $rating = new willvincentRateableRating;
+        $rating->rating = 5;
+        $rating->user_id = Auth::id();
+        $post->ratings()->save($rating);    
     }
     /**
      * Show the form for creating a new resource.
